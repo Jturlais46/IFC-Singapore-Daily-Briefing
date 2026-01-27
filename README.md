@@ -122,4 +122,4 @@ The project has evolved through several distinct phases of development to reach 
 *   **Fix**: Check the terminal output. If it is moving, just wait. If it is frozen for >5 minutes, restart the server.
 
 ---
-*Built with ❤️ by the IFC Singapore Tech Team*
+*Built with ❤️ by the IFC Singapore Country Team*
