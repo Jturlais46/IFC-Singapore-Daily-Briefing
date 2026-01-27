@@ -1,0 +1,256 @@
+{
+    "relevant_examples": [
+        {
+            "headline": "Temasek leads $500m investment in Indonesian fintech giant",
+            "reason": "Major Singapore entity (Temasek) making significant regional deal"
+        },
+        {
+            "headline": "GIC acquires stake in Vietnam renewable energy portfolio",
+            "reason": "Singapore sovereign wealth fund (GIC) regional infrastructure investment"
+        },
+        {
+            "headline": "DBS reports record Q4 profits on strong Southeast Asia growth",
+            "reason": "Major Singapore bank earnings with regional implications"
+        },
+        {
+            "headline": "MAS tightens monetary policy amid inflation concerns",
+            "reason": "Singapore central bank macro policy decision"
+        },
+        {
+            "headline": "Singapore Budget 2026 allocates $5bn for green transition",
+            "reason": "Singapore domestic policy with IFC-relevant sector focus"
+        },
+        {
+            "headline": "IFC provides $200m to support clean energy in Southeast Asia",
+            "reason": "Direct IFC involvement"
+        },
+        {
+            "headline": "World Bank raises Southeast Asia growth forecast to 5.2%",
+            "reason": "World Bank Group regional economic outlook"
+        },
+        {
+            "headline": "Singapore-based Grab to acquire Indonesian logistics startup for $1.2bn",
+            "reason": "Singapore entity making major regional acquisition"
+        },
+        {
+            "headline": "OCBC leads consortium in $800m Philippines toll road project",
+            "reason": "Singapore bank infrastructure financing in region"
+        },
+        {
+            "headline": "UOB expands into Vietnamese SME lending market",
+            "reason": "Singapore bank regional expansion"
+        },
+        {
+            "headline": "Singapore carbon tax to triple by 2030 under new climate bill",
+            "reason": "Singapore climate policy with investment implications"
+        },
+        {
+            "headline": "CapitaLand invests $300m in Indonesia data center expansion",
+            "reason": "Singapore RE company regional digital infrastructure"
+        },
+        {
+            "headline": "Keppel signs deal to develop Vietnam offshore wind farm",
+            "reason": "Singapore company renewable energy project"
+        },
+        {
+            "headline": "Singapore and Indonesia sign bilateral investment treaty update",
+            "reason": "Singapore trade/investment policy"
+        },
+        {
+            "headline": "Sembcorp awarded contract for Thailand solar power plant",
+            "reason": "Singapore company regional renewable project"
+        },
+        {
+            "headline": "Singapore REITs raise $2bn for Asia Pacific expansion",
+            "reason": "Singapore capital markets regional investment"
+        },
+        {
+            "headline": "PSA and Hutchison partner on Philippine port expansion",
+            "reason": "Singapore port operator regional infrastructure"
+        },
+        {
+            "headline": "Singtel invests in regional 5G infrastructure rollout",
+            "reason": "Singapore telecom regional digital infrastructure"
+        },
+        {
+            "headline": "ASEAN finance ministers meet in Singapore to discuss digital currency",
+            "reason": "Singapore hosting regional financial policy summit"
+        },
+        {
+            "headline": "Mapletree acquires Vietnam industrial park for $400m",
+            "reason": "Singapore RE company regional logistics investment"
+        },
+        {
+            "headline": "Singapore Airlines reports record annual profit of $2.7bn",
+            "reason": "Major corporate earnings signaling capital strength and potential expansion"
+        },
+        {
+            "headline": "Dyson to reduce workforce in Singapore headquarters amid restructuring",
+            "reason": "Major multinational HQ restructuring in Singapore - Market Signal"
+        },
+        {
+            "headline": "Singapore non-oil domestic exports slump 20% in August",
+            "reason": "Key macro indicator (Trade) showing shift in economic operating environment"
+        },
+        {
+            "headline": "Namibia's Minister of International Relations and Trade Makes First Official Visit to Singapore",
+            "reason": "High-level ministerial trade visit from emerging market signaling future capital flow opportunities"
+        },
+        {
+            "headline": "Malaysia and Singapore sign MOU for Johor-Singapore Special Economic Zone",
+            "reason": "JS-SEZ usage is always relevant"
+        },
+        {
+            "headline": "Equis Development raises $200m for renewable projects in Philippines",
+            "reason": "Singapore-based sponsor investing in Emerging Market"
+        },
+        {
+            "headline": "Ascendas India Trust buys warehouse in Pune for $80m",
+            "reason": "Singapore REIT investing in India (Emerging Market)"
+        },
+        {
+            "headline": "GLP pockets $1.5bn from sale of China logistics assets",
+            "reason": "Singapore-based global firm deal in Emerging Market"
+        }
+    ],
+    "irrelevant_examples": [
+        {
+            "headline": "Indonesia passes new labor reform bill",
+            "reason": "Purely domestic Indonesian policy, no Singapore angle"
+        },
+        {
+            "headline": "Malaysia announces new fuel subsidy scheme",
+            "reason": "Purely domestic Malaysian policy"
+        },
+        {
+            "headline": "Thailand election polls show tight race",
+            "reason": "Domestic Thai politics, no investment angle"
+        },
+        {
+            "headline": "Vietnam arrests corruption suspects in banking scandal",
+            "reason": "Domestic Vietnamese legal matter"
+        },
+        {
+            "headline": "Philippines typhoon displaces thousands",
+            "reason": "Weather/humanitarian, not investment news"
+        },
+        {
+            "headline": "Indonesian celebrity divorces in viral court case",
+            "reason": "Entertainment news, completely irrelevant"
+        },
+        {
+            "headline": "Malaysia launches new national car brand",
+            "reason": "Domestic Malaysian industrial policy"
+        },
+        {
+            "headline": "Thailand tourism numbers hit new high",
+            "reason": "General tourism stats without investment angle"
+        },
+        {
+            "headline": "Vietnam Ho Chi Minh City traffic congestion worsens",
+            "reason": "Local infrastructure issue, not investment news"
+        },
+        {
+            "headline": "Indonesian rupiah weakens against dollar",
+            "reason": "General FX movement without specific deal/policy context"
+        },
+        {
+            "headline": "Malaysia Ringgit faces pressure from US rate hikes",
+            "reason": "General FX commentary without specific angle"
+        },
+        {
+            "headline": "Jakarta hosts international food festival",
+            "reason": "Lifestyle/culture event, irrelevant"
+        },
+        {
+            "headline": "Thailand extends COVID emergency decree",
+            "reason": "Outdated/routine administrative news"
+        },
+        {
+            "headline": "Vietnam coffee exports hit record high",
+            "reason": "Commodity news without deal/investment angle"
+        },
+        {
+            "headline": "Indonesian coal production rises 15%",
+            "reason": "Commodity production stats without deal context"
+        },
+        {
+            "headline": "Malaysia palm oil prices surge on supply concerns",
+            "reason": "Commodity price movement without investment angle"
+        },
+        {
+            "headline": "Philippines central bank holds rates steady",
+            "reason": "Neighboring country monetary policy, not Singapore-focused"
+        },
+        {
+            "headline": "Thailand raises minimum wage by 5%",
+            "reason": "Domestic Thai labor policy"
+        },
+        {
+            "headline": "Vietnam real estate market shows signs of recovery",
+            "reason": "General market commentary without specific deal"
+        },
+        {
+            "headline": "Indonesia plans to build new capital city in Borneo",
+            "reason": "Domestic Indonesian infrastructure unless SG entity involved"
+        },
+        {
+            "headline": "Indonesian Prabowo Subianto wins presidency in landslide election",
+            "reason": "Neighboring domestic politics without direct Singapore treaty implication"
+        },
+        {
+            "headline": "Singapore police arrest 10 in billion-dollar money laundering raids",
+            "reason": "Domestic law enforcement / financial crime - Irrelevant"
+        },
+        {
+            "headline": "Keppel Infrastructure Trust acquires 50% stake in German wind farm",
+            "reason": "Singapore sponsor investing in High Income Country (Germany) - Excluded from IFC mandate"
+        },
+        {
+            "headline": "Singapore tourist arrivals hit 1.5 million n December",
+            "reason": "Domestic Singapore economic news without specific investment angle"
+        },
+        {
+            "headline": "Singapore man fined $2,000 for illegal smoking",
+            "reason": "Domestic Singapore law enforcement - Irrelevant"
+        },
+        {
+            "headline": "Singapore rental market cools as expat demand softens",
+            "reason": "Domestic Singapore real estate market trend - Irrelevant"
+        }
+    ],
+    "keywords_always_relevant": [
+        "IFC",
+        "World Bank",
+        "Temasek",
+        "GIC",
+        "DBS",
+        "OCBC",
+        "UOB",
+        "MAS",
+        "Keppel",
+        "Sembcorp",
+        "CapitaLand",
+        "Mapletree",
+        "PSA",
+        "Singtel",
+        "CPF",
+        "HDB",
+        "Grab",
+        "Sea Ltd",
+        "Equis",
+        "JS-SEZ",
+        "YTL Power",
+        "GLP",
+        "Ascendas"
+    ],
+    "deal_minimum_usd_millions": 50,
+    "categories": {
+        "IFC Portfolio / Pipeline Highlights": "Any mention of IFC, World Bank, or direct connections to IFC mandate",
+        "Macro Indicators": "GDP, inflation, monetary policy, trade data for Singapore or major regional reports",
+        "Policy & Political Economy": "Regulatory changes, government policy, political developments affecting investment climate",
+        "Financial Institutions & Capital Markets": "Banks, funds, IPOs, debt issuance, fintech, venture capital",
+        "Real-Sector Deal Flow - INR": "Infrastructure, energy, transport, logistics, utilities",
+        "Real-Sector Deal Flow - MAS": "Manufacturing, agribusiness, services, healthcare, education"
+    }
+}
