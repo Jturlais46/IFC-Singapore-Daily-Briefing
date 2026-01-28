@@ -381,24 +381,33 @@ OUTPUT (JSON only):
         if not candidates:
             return {}
 
-        prompt = """You are the IFC Singapore Country Manager's guardrail agent. 
-Select the news items that are RELEVANT to IFC Singapore.
+        prompt = """You are the IFC Singapore Country Manager's STRICT FILTER agent.
+**YOUR DEFAULT ANSWER IS "REJECT"**. Only mark is_relevant: true if the item CLEARLY meets relevance criteria AND does NOT match ANY exclusion.
 
-*** CRITICAL PRIORITY: CHECK EXCLUSION RULES FIRST ***
-If an item matches an EXCLUSION rule, REJECT IT immediately, regardless of other criteria.
+*** CRITICAL: APPLY EXCLUSION RULES FIRST - IF ANY MATCH, REJECT IMMEDIATELY ***
 
-EXCLUSION RULES (REJECT THESE):
-1. HIGH INCOME COUNTRIES (HIC): REJECT investments by Singapore sponsors into High Income Countries (USA, UK, Germany, Europe, Japan, Australia, etc.). IFC ONLY focuses on Emerging Markets.
+EXCLUSION RULES (REJECT THESE - CHECK EACH ONE):
+1. HIGH INCOME COUNTRIES (HIC): REJECT investments by Singapore sponsors into High Income Countries (USA, UK, Germany, Europe, Japan, Australia, Canada, etc.). IFC ONLY focuses on Emerging Markets.
    - REJECT: "Keppel invests in German wind farm" (Germany is HIC).
    - REJECT: "VinFast IPO in US" (US is HIC).
    - ACCEPT: "Ascendas invests in India" (India is EM).
-2. DOMESTIC NOISE: REJECT domestic Singapore news including:
+2. DOMESTIC SINGAPORE SOCIAL: REJECT domestic Singapore social/lifestyle news:
+   - Demographics (fertility rates, birth rates, aging, population).
+   - Education policy (SkillsFuture, universities, course funding).
+   - Immigration/manpower policy (unless directly affects business investment flows).
+   - General legal/tech commentary (AI liability, privacy laws) without deal context.
    - Retail, Tourism, Shopping, Dining.
    - Crime, Police Raids, Money Laundering arrests (unless Systemic Banking Crisis).
    - Local Transport, Housing, HDB, Rental market.
-   - Routine Politics/civil service appointments.
-3. NEIGHBOR POLITICS: REJECT domestic politics of Indonesia/Malaysia/Vietnam (e.g. elections) UNLESS there is a specific, explicit Singapore treaty/trade deal mentioned.
-4. PURELY FOREIGN: REJECT regional news with NO link to Singapore (no Singapore sponsor/capital).
+3. NEIGHBOR POLITICS: REJECT domestic politics of Indonesia/Malaysia/Vietnam/Thailand/India (e.g. elections, local regulations) UNLESS there is a specific, explicit Singapore treaty/trade deal mentioned.
+4. PURELY FOREIGN: REJECT regional/international news with NO link to Singapore:
+   - Foreign bilateral deals (Canada-India oil trade, India-EU tariffs) - no Singapore.
+   - Foreign company IPOs (China company HK IPO) - no Singapore sponsor.
+   - Regional bank internal strategies (Maybank AI investment) - unless deal with SG entity.
+   - Regional banking risks (Vietnam debt) - unless Singapore exposure stated.
+5. GENERAL COMMENTARY: REJECT general trade/economic commentary without actionable hook:
+   - "RCEP needs more work" - no deal, no action.
+   - "Market outlook uncertain" - no specific signal.
 
 STRICT RELEVANCE CRITERIA (If NOT Excluded, matches ONE?):
 1. Pipeline signal (deal/financing): Singapore-based sponsor requiring capital (>$30m), M&A/JV, or scaling into Emerging Markets.
@@ -410,7 +419,6 @@ STRICT RELEVANCE CRITERIA (If NOT Excluded, matches ONE?):
 5. JS-SEZ: Any meaningful development regarding the Johor-Singapore Special Economic Zone.
 
 CATEGORIES (ASSIGN ONE):
-- IFC Portfolio / Pipeline Highlights
 - Macro Indicators
 - Policy & Political Economy
 - Financial Institutions & Capital Markets
@@ -621,7 +629,7 @@ OUTPUT (JSON only):
                 # Assign ID temporarily for tracking
                 item['id'] = str(len(final_items) + len(batch_candidates) + len(rejected_items))
 
-                if score < -0.10: 
+                if score < -0.05:  # Tightened threshold to reject more borderline cases 
                     # Auto reject
                     item['relevance_reason'] = f"Low Semantic Score ({score:.2f})"
                     rejected_items.append(item)

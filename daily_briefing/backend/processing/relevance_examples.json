@@ -217,6 +217,58 @@
         {
             "headline": "Singapore rental market cools as expat demand softens",
             "reason": "Domestic Singapore real estate market trend - Irrelevant"
+        },
+        {
+            "headline": "Singapore fertility rate declines amid demographic concerns",
+            "reason": "Domestic Singapore demographics - not business/investment relevant"
+        },
+        {
+            "headline": "SkillsFuture course funding guidelines tightened for training providers",
+            "reason": "Domestic Singapore education/social policy - not IFC-relevant"
+        },
+        {
+            "headline": "Singapore immigration policy must address low birth rates",
+            "reason": "Domestic Singapore demographics/immigration - not pipeline-relevant"
+        },
+        {
+            "headline": "India scraps delivery time requirement for food platforms",
+            "reason": "Purely domestic India regulation, no Singapore sponsor"
+        },
+        {
+            "headline": "Thailand gold traders must report large transactions to central bank",
+            "reason": "Domestic Thailand regulation, no Singapore angle"
+        },
+        {
+            "headline": "Canada and India sign oil and petroleum trade agreement",
+            "reason": "Foreign bilateral deal between non-Singapore countries"
+        },
+        {
+            "headline": "China beverage company seeks billion-dollar Hong Kong IPO",
+            "reason": "Chinese domestic company IPO, no Singapore sponsor"
+        },
+        {
+            "headline": "Malaysian bank to invest billions in AI and technology",
+            "reason": "Domestic Malaysian bank policy, no Singapore angle"
+        },
+        {
+            "headline": "Vietnam banks face hidden risks from mounting debt guarantees",
+            "reason": "Domestic Vietnam banking issue, no Singapore sponsor"
+        },
+        {
+            "headline": "RCEP trade agreement still needs more work",
+            "reason": "General trade commentary without actionable Singapore hook"
+        },
+        {
+            "headline": "India to cut car tariffs in pending EU trade deal",
+            "reason": "Foreign bilateral trade deal, no Singapore connection"
+        },
+        {
+            "headline": "Indonesian stocks plunge following MSCI warning",
+            "reason": "Domestic Indonesian market news without Singapore sponsor angle"
+        },
+        {
+            "headline": "Singapore clarifies liability rules for artificial intelligence",
+            "reason": "Domestic Singapore legal/tech commentary without deal context"
         }
     ],
     "keywords_always_relevant": [
