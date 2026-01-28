@@ -11,8 +11,8 @@
 The IFC Singapore Daily Briefing tool was conceived to solve a specific problem: **Information Overload**. 
 Investment officers and executives spend too much time sifting through noise to find signals relevant to:
 *   **Region**: Southeast Asia & Pacific.
-*   **Sectors**: Infrastructure, Green Finance, Fintech, Manufacturing, and Agribusiness.
-*   **Action**: Investment opportunities, policy shifts, and competitor movements.
+*   **Sectors**: MAS, INR, FIG, and CSF.
+*   **Action**: Investment opportunities, policy shifts, FDIs, etc
 
 ### Core Directives
 The system is governed by strict "Directives" that dictate what is considered "curated news":
@@ -122,4 +122,4 @@ The project has evolved through several distinct phases of development to reach 
 *   **Fix**: Check the terminal output. If it is moving, just wait. If it is frozen for >5 minutes, restart the server.
 
 ---
-*Built with ❤️ by the IFC Singapore Tech Team*
+*Built with ❤️ by the IFC Singapore Country Team*
