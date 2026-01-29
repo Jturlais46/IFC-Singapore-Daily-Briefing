@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IFC Singapore Daily Briefing</title>
+    <link rel="stylesheet" href="style.css?v=2.2">
+    <!-- Using Google Fonts for 'Segoe UI' look-alike context if system font unavailable -->
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div style="flex: 1;">
+                <h1>IFC Singapore Monthly Briefing</h1>
+                <p style="margin: 0.2rem 0 0; color: #666; font-size: 0.9rem;">Curation Tool</p>
+
+                <!-- Source Selection -->
+                <div id="sourcesContainer" style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <!-- Checkboxes injected by JS -->
+                </div>
+            </div>
+            <div class="controls">
+                <div style="display: flex; gap: 0.5rem; align-items: center;">
+                    <select id="monthPicker" class="form-control" style="width: auto;">
+                        <option value="0">January</option>
+                        <option value="1">February</option>
+                        <option value="2">March</option>
+                        <option value="3">April</option>
+                        <option value="4">May</option>
+                        <option value="5">June</option>
+                        <option value="6">July</option>
+                        <option value="7">August</option>
+                        <option value="8">September</option>
+                        <option value="9">October</option>
+                        <option value="10">November</option>
+                        <option value="11">December</option>
+                    </select>
+                    <input type="number" id="yearPicker" class="form-control" style="width: 80px;" min="2023"
+                        max="2030">
+                </div>
+                <button id="fetchBtn" class="btn-primary">
+                    <span class="btn-text">Fetch News</span>
+                    <div class="loader"></div>
+                </button>
+                <button id="exportBtn" class="btn-secondary">Publish to Outlook</button>
+            </div>
+        </header>
+
+        <div id="statusMessage" style="text-align: center; margin-bottom: 2rem; color: #666;"></div>
+
+        <!-- Thought Process View (Stepper Design) -->
+        <div id="processingView" class="processing-view hidden">
+            <div class="processing-header">
+                <div>
+                    <h2 class="processing-title-text">Curating Daily Briefing</h2>
+                    <p class="processing-subtitle">AI Agent is analyzing the news stream...</p>
+                </div>
+                <div id="timeRemaining" class="time-remaining">Initializing...</div>
+            </div>
+
+            <div class="stepper-container">
+                <!-- Step 1: Sources -->
+                <div class="step-item" id="step1">
+                    <div class="step-icon">
+                        <svg class="icon-wait" width="24" height="24" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                        <svg class="icon-check" width="24" height="24" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <div class="icon-spinner"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-label">Retrieving Content</div>
+                        <div class="step-desc">Scanning RSS, Google Alerts, and subscriptions</div>
+                    </div>
+                </div>
+
+                <!-- Step 2: Analysis -->
+                <div class="step-item" id="step2">
+                    <div class="step-line-up"></div>
+                    <div class="step-icon">
+                        <svg class="icon-wait" width="24" height="24" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                        <svg class="icon-check" width="24" height="24" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <div class="icon-spinner"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-label">AI Relevance Analysis</div>
+                        <div class="step-desc">
+                            <span id="aiStatusText">Waiting for content...</span>
+                            <div class="mini-progress-track">
+                                <div id="miniProgressBar" class="mini-progress-fill"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: Finalize -->
+                <div class="step-item" id="step3">
+                    <div class="step-line-up"></div>
+                    <div class="step-icon">
+                        <svg class="icon-wait" width="24" height="24" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="10"></circle>
+                        </svg>
+                        <svg class="icon-check" width="24" height="24" viewBox="0 0 24 24">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                        </svg>
+                        <div class="icon-spinner"></div>
+                    </div>
+                    <div class="step-content">
+                        <div class="step-label">Finalizing Report</div>
+                        <div class="step-desc">Formatting and deduping results</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="log-toggle-container">
+                <button id="toggleLogBtn" class="btn-text-only" onclick="toggleLog()">View detailed logs</button>
+            </div>
+
+            <div id="logCollapsible" class="log-collapsible closed">
+                <div id="logTerminal" class="log-terminal">
+                    <!-- Logs go here -->
+                </div>
+            </div>
+        </div>
+
+        <div id="newsContainer">
+            <!-- Sections will be injected here -->
+            <div style="text-align: center; padding: 4rem; color: #aaa;">
+                Select a Month/Year and click "Fetch News" to start.
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js?v=2.2"></script>
+</body>
+
+</html>

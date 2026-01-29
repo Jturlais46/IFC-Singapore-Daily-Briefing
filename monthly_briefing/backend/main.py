@@ -98,7 +98,8 @@ keywords_agent = KeywordsAgent()
 google_scraper = GoogleSearchScraper()
 
 class FetchRequest(BaseModel):
-    date_from: datetime
+    date_start: datetime
+    date_end: datetime
     sources: Optional[List[str]] = ["gmail", "ft", "dsa", "rss", "google"] # Default to all
 
 class UpdateItemRequest(BaseModel):
@@ -109,25 +110,26 @@ class RewriteRequest(BaseModel):
     id: str
 
 # Helper functions to run sync code in thread pool
-def _fetch_gmail(date_from):
+def _fetch_gmail(date_start, date_end):
     gmail = GmailClient()
-    return gmail.fetch_news(date_from)
+    return gmail.fetch_news(date_start, date_end)
 
-def _fetch_ft(date_from):
+def _fetch_ft(date_start, date_end):
     ft = FTScraper()
-    return ft.scrape(date_from)
+    return ft.scrape(date_start, date_end)
 
-def _fetch_dsa(date_from):
+def _fetch_dsa(date_start, date_end):
     dsa = DSAScraper()
-    return dsa.scrape(date_from)
+    return dsa.scrape(date_start, date_end)
 
-def _fetch_google(date_from):
-    # 1. Devise keywords using agent
-    queries = keywords_agent.generate_search_queries(date_from)
+def _fetch_google(date_start, date_end):
+    # 1. Devise keywords using agent based on the start date (or range context?)
+    # Ideally should generate for the whole month.
+    queries = keywords_agent.generate_search_queries(date_start) # Maybe update agent later
     # 2. Scrape Google Research
-    return google_scraper.scrape(queries, date_from)
+    return google_scraper.scrape(queries, date_start, date_end)
     
-def _fetch_rss(date_from, target_sources=None):
+def _fetch_rss(date_start, date_end, target_sources=None):
     # Filter RSS_FEEDS based on target_sources (if provided)
     if target_sources:
         # Filter config to only include keys that are in target_sources
@@ -140,7 +142,7 @@ def _fetch_rss(date_from, target_sources=None):
         print("No matching RSS feeds found for selection.")
         return []
 
-    return get_rss_news(feed_config, date_from=date_from)
+    return get_rss_news(feed_config, date_start=date_start, date_end=date_end)
 
 from fastapi.responses import StreamingResponse
 import json
@@ -176,9 +178,8 @@ async def run_fetch_pipeline(request: FetchRequest, queue: asyncio.Queue):
     global current_news_db, current_rejected_db
     
     try:
-        date_from = request.date_from
-        # Normalize to start of day (00:00:00) to capture all news from that date
-        date_from = date_from.replace(hour=0, minute=0, second=0, microsecond=0)
+        date_start = request.date_start.replace(hour=0, minute=0, second=0, microsecond=0)
+        date_end = request.date_end.replace(hour=0, minute=0, second=0, microsecond=0)
         
         # Determine actual sources list to use
         req_sources = request.sources or ["gmail", "ft", "dsa", "rss", "google"] 
@@ -187,7 +188,7 @@ async def run_fetch_pipeline(request: FetchRequest, queue: asyncio.Queue):
 
         raw_items = []
         
-        await queue.put({"type": "log", "message": f"Initializing search for {date_from.date()}..."})
+        await queue.put({"type": "log", "message": f"Initializing search for {date_start.date()} to {date_end.date()}..."})
         
         # 1. Fetch from sources
         # We can run these in parallel or sequence. Parallel is better for speed, but let's keep it simple and safe for now,
@@ -198,7 +199,7 @@ async def run_fetch_pipeline(request: FetchRequest, queue: asyncio.Queue):
             await queue.put({"type": "log", "message": "Scanning Google Alerts..."})
             try:
                 # Run in thread
-                gmail_items = await asyncio.to_thread(_fetch_gmail, date_from)
+                gmail_items = await asyncio.to_thread(_fetch_gmail, date_start, date_end)
                 await queue.put({"type": "log", "message": f"Found {len(gmail_items)} items from Gmail."})
                 raw_items.extend(gmail_items)
             except Exception as e:
@@ -208,7 +209,7 @@ async def run_fetch_pipeline(request: FetchRequest, queue: asyncio.Queue):
         if "dsa" in sources:
             await queue.put({"type": "log", "message": "Scanning DealStreetAsia..."})
             try:
-                dsa_items = await asyncio.to_thread(_fetch_dsa, date_from)
+                dsa_items = await asyncio.to_thread(_fetch_dsa, date_start, date_end)
                 await queue.put({"type": "log", "message": f"Found {len(dsa_items)} items from DSA."})
                 raw_items.extend(dsa_items)
             except Exception as e:
@@ -218,7 +219,7 @@ async def run_fetch_pipeline(request: FetchRequest, queue: asyncio.Queue):
         if "google" in sources:
             await queue.put({"type": "log", "message": "Conducting AI-driven Google Research..."})
             try:
-                google_items = await asyncio.to_thread(_fetch_google, date_from)
+                google_items = await asyncio.to_thread(_fetch_google, date_start, date_end)
                 await queue.put({"type": "log", "message": f"Found {len(google_items)} items from Google Research."})
                 raw_items.extend(google_items)
             except Exception as e:
@@ -230,7 +231,7 @@ async def run_fetch_pipeline(request: FetchRequest, queue: asyncio.Queue):
         if has_rss_request:
             await queue.put({"type": "log", "message": "Scanning RSS Feeds..."})
             try:
-                rss_items = await asyncio.to_thread(_fetch_rss, date_from, sources)
+                rss_items = await asyncio.to_thread(_fetch_rss, date_start, date_end, sources)
                 await queue.put({"type": "log", "message": f"Found {len(rss_items)} items from RSS."})
                 raw_items.extend(rss_items)
             except Exception as e:
@@ -371,4 +372,4 @@ async def export_news():
 app.mount("/", StaticFiles(directory=str(FRONTEND_DIR), html=True), name="frontend")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8001)
